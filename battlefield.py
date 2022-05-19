@@ -4,17 +4,25 @@ from dinosaur import Dinosaur
 class Battlefield():
 
     def __init__(self):
-        self.robot = Robot()
-        self.dinosaur = Dinosaur()
+        self.robot = Robot('robot')
+        self.dinosaur = Dinosaur('dino', 70)
 
     def run_game(self):
-        pass
+        self.display_welcome()
+        self.battle_phase()
 
     def display_welcome(self):
-        pass
+        print('Welcome to the battle')
 
-    def battle_phrase(self):
-        pass
+    def battle_phase(self):
+        while self.dinosaur.health > 0 and self.robot.health > 0:
+            self.robot.attack(self.dinosaur)
+            self.dinosaur.attack(self.robot)
+            if self.dinosaur.health == 0:
+                print('dino wins')
+            else:
+                print('robot wins')
 
     def display_winner(self):
         pass
+
